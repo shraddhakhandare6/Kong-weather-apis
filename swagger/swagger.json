@@ -1,0 +1,143 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Weather Forecast API",
+    "version": "1.0.0",
+    "description": "Weather API for managing forecasts"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000",
+      "description": "Local development server"
+    }
+  ],
+  "paths": {
+    "/weatherapi/v1/info": {
+      "get": {
+        "summary": "List forecasts",
+        "responses": {
+          "200": {
+            "description": "An array of forecasts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Forecast" }
+                }
+              }
+            }
+          },
+          "500": { "description": "Server error" }
+        }
+      }
+    },
+    "/weatherapi/v1/info/{id}": {
+      "get": {
+        "summary": "Get a forecast by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Forecast found",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Forecast" } }
+            }
+          },
+          "404": { "description": "Forecast not found" },
+          "500": { "description": "Server error" }
+        }
+      }
+    },
+    "/weatherapi/v1/create": {
+      "post": {
+        "summary": "Create a new forecast",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/NewForecast" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Forecast created",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Forecast" } }
+            }
+          },
+          "400": { "description": "Invalid input" },
+          "500": { "description": "Server error" }
+        }
+      }
+    },
+    "/weatherapi/v1/update/{id}": {
+      "put": {
+        "summary": "Update an existing forecast",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/NewForecast" } }
+          }
+        },
+        "responses": {
+          "200": { "description": "Forecast updated", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Forecast" } } } },
+          "400": { "description": "Invalid input" },
+          "404": { "description": "Forecast not found" },
+          "500": { "description": "Server error" }
+        }
+      }
+    },
+    "/weatherapi/v1/remove/{id}": {
+      "delete": {
+        "summary": "Delete a forecast",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "Forecast deleted", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/DeleteResponse" } } } },
+          "404": { "description": "Forecast not found" },
+          "500": { "description": "Server error" }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Forecast": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "city": { "type": "string" },
+          "temperature_celsius": { "type": "number" },
+          "condition": { "type": "string" }
+        },
+        "required": ["city", "temperature_celsius", "condition"]
+      },
+      "NewForecast": {
+        "type": "object",
+        "properties": {
+          "city": { "type": "string" },
+          "temperature_celsius": { "type": "number" },
+          "condition": { "type": "string" }
+        },
+        "required": ["city", "temperature_celsius", "condition"]
+      },
+      "DeleteResponse": {
+        "type": "object",
+        "properties": {
+          "message": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+nohup: ignoring input
+
+> weather-api@1.0.0 dev
+> ts-node-dev --respawn --transpile-only src/server.ts
+
+[INFO] 17:48:48 ts-node-dev ver. 2.0.0 (using ts-node ver. 10.9.2, typescript ver. 5.9.2)
+Using SUPABASE_SERVICE_ROLE_KEY for Supabase client (server-side).
+(node:41267) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Server running on port 5000
+Swagger docs available at http://localhost:5000/weatherapi/v1/docs
+✅ Supabase connected successfully
+[INFO] 17:49:11 Restarting: /home/shraddha/forecast-api/weather-api/swagger/swagger.json has been modified
+Using SUPABASE_SERVICE_ROLE_KEY for Supabase client (server-side).
+(node:41403) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Server running on port 5000
+Swagger docs available at http://localhost:5000/weatherapi/v1/docs
+[INFO] 17:49:13 Restarting: /home/shraddha/forecast-api/weather-api/swagger/swagger.json has been modified
+Using SUPABASE_SERVICE_ROLE_KEY for Supabase client (server-side).
+(node:41428) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Server running on port 5000
+Swagger docs available at http://localhost:5000/weatherapi/v1/docs
+✅ Supabase connected successfully
+[INFO] 17:49:15 Restarting: /home/shraddha/forecast-api/weather-api/swagger/swagger.json has been modified
+Using SUPABASE_SERVICE_ROLE_KEY for Supabase client (server-side).
+(node:41439) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Server running on port 5000
+Swagger docs available at http://localhost:5000/weatherapi/v1/docs
+✅ Supabase connected successfully
